@@ -1,5 +1,7 @@
 const validators=require("validator");
 const mongoose=require("mongoose");
+const bcrypt=require("bcrypt");
+const jwt=require("jsonwebtoken");
 
 const userSchema=new mongoose.Schema({
     firstName:{
@@ -40,7 +42,7 @@ const userSchema=new mongoose.Schema({
     gender:{
         type:String,
         validate(value){
-          if(!["Male","female","others"].includes(value)){
+          if(!["male","female","others"].includes(value)){
             throw new Error("please enter a valid gender");
           }
         }
@@ -72,4 +74,17 @@ const userSchema=new mongoose.Schema({
 {timestamps:true}
 );
 
+userSchema.methods.getJWT=async function(){
+    const user=this;
+    const {_id}=user;
+    const token=jwt.sign({_id:_id},"Harsh@123",{expiresIn:"8h"});
+    return token;
+}
+
+userSchema.methods.comparePassword= async function (userInputPassword){
+    const user=this;
+    const hashedPassword=user.password;
+    const isPasswordValid=await bcrypt.compare(userInputPassword,hashedPassword);
+    return isPasswordValid;
+}
 module.exports=mongoose.model("user",userSchema);
