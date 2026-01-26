@@ -13,7 +13,7 @@ function App() {
       element: <RootLayout />,
       children: [
         {path:"feed",element:<Feed/>},
-        { path: "login", element: <Login /> },
+        { path:"login", element: <Login /> },
         { path: "profile", element: <Profile /> },
       ],
     },

@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
+
 function Feed(){
+  const naviage=useNavigate();
   return (
     <div>
-        Feed
+        <button onClick={()=>naviage('/profile')}>Save</button>
     </div>
   )
 }

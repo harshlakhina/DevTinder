@@ -6,7 +6,7 @@ const userAuth=async (req,res,next)=>{
         const {token}=req.cookies;
     
     if(!token){
-        throw new Error("user not loggedIn");
+        return res.status(401).send("User not logged in")
     }
 
     const {_id} =await jwt.verify(token,"Harsh@123");
@@ -23,7 +23,7 @@ const userAuth=async (req,res,next)=>{
     next();
    }
    catch(err){
-    res.status(400).send("ERROR:"+err.message);
+    res.status(401).send("ERROR:"+err.message);
    }
 }
 
