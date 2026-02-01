@@ -18,7 +18,6 @@ function Login() {
         password,
       },{withCredentials:true});
 
-      console.log(res.data.user);
       dispatch(addUser(res.data.user));
       navigate('/feed');
     } catch (err) {
