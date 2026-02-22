@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../Utils/contsants"
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("narangKavya@gmail.com");
+  const [password, setPassword] = useState("Kavay@123@");
   const dispatch=useDispatch();
   const navigate=useNavigate();
 
@@ -17,7 +17,6 @@ function Login() {
         emailId: email,
         password,
       },{withCredentials:true});
-
       dispatch(addUser(res.data.user));
       navigate('/feed');
     } catch (err) {
