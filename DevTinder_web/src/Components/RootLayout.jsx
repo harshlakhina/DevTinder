@@ -12,15 +12,12 @@ function RootLayout() {
   const dispatch=useDispatch();
 
   const fetchUser = async () => {
-    console.log("fetchuser")
     try {
       const res = await axios.get(BASE_URL + "/profile/view",{
         withCredentials:true
       });
-      console.log("user",res.data)
       dispatch(addUser(res.data));
     } catch (err) {
-      console.log(err);
      if(err.status==401) navigate("/login");
     }
   };
