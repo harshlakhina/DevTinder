@@ -26,7 +26,6 @@ function EditProfile() {
         { firstName, lastName, about, gender, age, photoUrl },
         { withCredentials: true },
       );
-      console.log(response);
       dispatch(addUser(response?.data?.data));
       setIsToastActive(true);
 
@@ -67,7 +66,7 @@ function EditProfile() {
             </fieldset>
 
             <fieldset className="fieldset">
-              <legend className="fieldset-legend">LastName:</legend>
+              <legend className="fieldset-legend">Photourl:</legend>
               <input
                 type="text"
                 className="input"
@@ -114,7 +113,7 @@ function EditProfile() {
         </div>
       </div>
 
-      <UserCard user={{ firstName, lastName, gender, about, age, photoUrl }} />
+      <UserCard user={{ firstName, lastName, gender, about, age, photoUrl }} isbtns={false} />
     </div>
    </>
   );

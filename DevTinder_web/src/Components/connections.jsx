@@ -13,7 +13,6 @@ function Connections() {
       const res = await axios.get(BASE_URL + "/user/connections", {
       withCredentials: true,
     });
-
     dispatch(addConnections(res?.data?.data));
   }
   catch(err){
@@ -30,7 +29,9 @@ function Connections() {
       <div className="w-1/2 ">
         <ul className="list flex flex-col gap-5">
           <h1 className="text-center text-2xl font-bold">Connections</h1>
-          {connections && connections.map((connection) => (
+          {connections && connections.map((connection) => {
+            console.log(connection);
+            return (
             <li className="list-row bg-base-300" key={connection._id}>
               <div>
                 <img
@@ -50,7 +51,7 @@ function Connections() {
                {connection.about}
               </p>}
             </li>
-          ))}
+          )})}
         </ul>
       </div>
     </div>

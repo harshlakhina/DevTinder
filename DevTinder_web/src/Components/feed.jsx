@@ -19,10 +19,13 @@ function Feed(){
   useEffect(()=>{
     getFeed();
   },[]);
+
+  
   return (
     <div className="flex justify-center my-6">
-      {feed.length>0 && <UserCard user={feed[0]}/>}
+      {feed.length>0 && <UserCard user={feed[0]} isbtns={true}/>}
     </div>
+
   )
 }
 
