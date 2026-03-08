@@ -6,6 +6,8 @@ const cookieParser=require("cookie-parser");
 
 require("dotenv").config();
 
+require("./Utils/cron-job");
+
 const authRouter=require("./Routes/Auth");
 const profileRouter=require("./Routes/Profile");
 const requestRouter=require("./Routes/Request");
