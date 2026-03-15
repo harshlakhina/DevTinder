@@ -7,6 +7,7 @@ import AppStore from "./Utils/appStore";
 import Feed from "./Components/feed";
 import Connections from "./Components/connections";
 import Requests from "./Components/requests";
+import Premium from "./Components/premium";
 
 function App() {
   const router = createBrowserRouter([
@@ -18,7 +19,8 @@ function App() {
         { path: "login", element: <Login /> },
         { path: "profile", element: <Profile /> },
         { path: "connections", element: <Connections /> },
-        {path:"/requests",element:<Requests/>}
+        {path:"/requests",element:<Requests/>},
+        {path:"/premium",element:<Premium/>}
       ],
     },
   ]);
