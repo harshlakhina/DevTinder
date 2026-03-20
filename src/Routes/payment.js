@@ -60,6 +60,13 @@ paymentRouter.post("/create-order", userAuth, async (req, res) => {
   }
 });
 
+paymentRouter.get("/payment-verify", userAuth, (req, res) => {
+  const loggedInUser = req.user;
+
+  const isPremium = loggedInUser.isPremium;
+  return res.json({ isPremium });
+});
+
 paymentRouter.post("/webhook", async (req, res) => {
   const signature = req.headers["stripe-signature"];
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
@@ -101,4 +108,5 @@ paymentRouter.post("/webhook", async (req, res) => {
     return res.status(400).send(`Webhook Error: ${err.message}`);
   }
 });
+
 module.exports = paymentRouter;
