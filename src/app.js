@@ -14,7 +14,13 @@ const requestRouter = require("./Routes/Request");
 const userRouter = require("./Routes/User");
 const paymentRouter = require("./Routes/payment");
 
-app.use(express.json());
+app.use(
+  express.json({
+    verify: (req, res, buff) => {
+      if (req.originalUrl === "/webhook") req.rawBody = buff;
+    },
+  }),
+);
 app.use(cookieParser());
 app.use(
   cors({

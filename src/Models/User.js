@@ -58,10 +58,16 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+
     isPremium: {
       type: Boolean,
       default: false,
       required: true,
+    },
+
+    premiumExpiredAt: {
+      type: Date,
+      required: false,
     },
 
     skills: {

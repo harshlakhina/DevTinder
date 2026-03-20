@@ -1,5 +1,6 @@
 const express = require("express");
 const { userAuth } = require("../Middlewares/userAuth");
+const { addMonths } = require("date-fns");
 
 const paymentRouter = express.Router();
 const stripeClient = require("../Utils/stripe");
@@ -42,10 +43,14 @@ paymentRouter.post("/create-order", userAuth, async (req, res) => {
           quantity: 1,
         },
       ],
-      success_url: "https://www.google.com",
-      metadata: {
-        email: loggedInUser.emailId,
-        userId: String(loggedInUser._id),
+      success_url: "http://localhost:5173/success",
+      cancel_url: "http://localhost:5173/failure",
+      payment_intent_data: {
+        metadata: {
+          email: loggedInUser.emailId,
+          userId: String(loggedInUser._id),
+          memberShipType,
+        },
       },
     });
 
@@ -55,4 +60,45 @@ paymentRouter.post("/create-order", userAuth, async (req, res) => {
   }
 });
 
+paymentRouter.post("/webhook", async (req, res) => {
+  const signature = req.headers["stripe-signature"];
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+
+  let event;
+
+  try {
+    event = stripeClient.webhooks.constructEvent(
+      req.rawBody,
+      signature,
+      webhookSecret,
+    );
+
+    switch (event.type) {
+      case "payment_intent.succeeded": {
+        const stripeCustomerId = event.data.object.customer;
+
+        const user = await User.findOne({ stripeCustomerId });
+        console.log("user", user);
+        user.isPremium = true;
+
+        if (event.data.object.metadata.memberShipType === "gold") {
+          const expiryDate = addMonths(new Date(), 6);
+          console.log("expiryDateGold", expiryDate);
+          user.premiumExpiredAt = expiryDate;
+        }
+        if (event.data.object.metadata.memberShipType === "silver") {
+          const expiryDate = addMonths(new Date(), 3);
+          console.log("expiryDateSilver", expiryDate);
+          user.premiumExpiredAt = expiryDate;
+        }
+
+        await user.save();
+        console.log(user);
+      }
+    }
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(`Webhook Error: ${err.message}`);
+  }
+});
 module.exports = paymentRouter;

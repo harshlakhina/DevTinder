@@ -8,6 +8,8 @@ import Feed from "./Components/feed";
 import Connections from "./Components/connections";
 import Requests from "./Components/requests";
 import Premium from "./Components/premium";
+import Success from "./Components/success";
+import Failure from "./Components/failure";
 
 function App() {
   const router = createBrowserRouter([
@@ -19,8 +21,10 @@ function App() {
         { path: "login", element: <Login /> },
         { path: "profile", element: <Profile /> },
         { path: "connections", element: <Connections /> },
-        {path:"/requests",element:<Requests/>},
-        {path:"/premium",element:<Premium/>}
+        { path: "/requests", element: <Requests /> },
+        { path: "/premium", element: <Premium /> },
+        { path: "success", element: <Success /> },
+        { path: "failure", element: <Failure /> },
       ],
     },
   ]);
