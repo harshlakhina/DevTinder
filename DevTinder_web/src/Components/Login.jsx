@@ -8,7 +8,7 @@ import { BASE_URL } from "../Utils/contsants";
 function Login() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("lakhinaharsh45@gmail.com");
+  const [email, setEmail] = useState("lakhinaharsh123@gmail.com");
   const [password, setPassword] = useState("Harsh@123");
 
   const [isLogin, setIsLogin] = useState(false);
@@ -131,15 +131,16 @@ function Login() {
             </button>
           </div>
 
-          <div className="flex justify-center" >
-           <div className="flex">
-             <p>
-              {isLogin ? "New User?" : "Existing User?"}
-            </p>
-            <p className="text-blue-800 cursor-pointer"  onClick={() => setIsLogin((prev) => !prev)}>
-              {isLogin ? "Sign Up here" : "Login here"}
-            </p>
-           </div>
+          <div className="flex justify-center">
+            <div className="flex">
+              <p>{isLogin ? "New User?" : "Existing User?"}</p>
+              <p
+                className="text-blue-800 cursor-pointer"
+                onClick={() => setIsLogin((prev) => !prev)}
+              >
+                {isLogin ? "Sign Up here" : "Login here"}
+              </p>
+            </div>
           </div>
         </div>
       </div>
