@@ -1,4 +1,12 @@
+import { useEffect } from "react";
+import { createSocketConnection } from "../Utils/socket";
+
 function Chart() {
+  useEffect(() => {
+    const socket = createSocketConnection();
+
+    socket.emit("");
+  }, []);
   return (
     <div className=" flex justify-center">
       <div className="border-2  w-1/2 h-90 flex-col items-center relative overflow-hidden">
