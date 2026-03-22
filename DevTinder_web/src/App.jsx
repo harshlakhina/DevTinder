@@ -10,6 +10,7 @@ import Requests from "./Components/requests";
 import Premium from "./Components/premium";
 import Success from "./Components/success";
 import Failure from "./Components/failure";
+import Chart from "./Components/chart";
 
 function App() {
   const router = createBrowserRouter([
@@ -25,6 +26,7 @@ function App() {
         { path: "/premium", element: <Premium /> },
         { path: "success", element: <Success /> },
         { path: "failure", element: <Failure /> },
+        { path: "chat/:targetId", element: <Chart /> },
       ],
     },
   ]);
