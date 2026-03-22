@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const connectDB = require("./config/database");
 const app = express();
+const { createServer } = require("http");
 const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
@@ -13,6 +14,8 @@ const profileRouter = require("./Routes/Profile");
 const requestRouter = require("./Routes/Request");
 const userRouter = require("./Routes/User");
 const paymentRouter = require("./Routes/payment");
+
+const initializeSocket = require("./Utils/socket");
 
 app.use(
   express.json({
@@ -35,11 +38,14 @@ app.use("/", requestRouter);
 app.use("/", userRouter);
 app.use("/", paymentRouter);
 
+const server = createServer(app);
+initializeSocket(server);
+
 connectDB()
   .then(() => {
     console.log("database connection established");
 
-    app.listen(process.env.PORT || 8080, () => {
+    server.listen(process.env.PORT || 8080, () => {
       console.log("server is listening on port 8080");
     });
   })
