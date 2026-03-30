@@ -20,7 +20,7 @@ function initializeSocket(server) {
       socket.join(roomId);
     });
 
-    socket.on("sendMessage", async({ userId, targetId, text }) => {
+    socket.on("sendMessage", async({ userId, targetId, text,firstName,lastName }) => {
       try {
         const roomId = generateRoomId(userId, targetId);
         let chat=await Chat.findOne({
@@ -41,7 +41,7 @@ function initializeSocket(server) {
 
         await chat.save();
 
-        io.to(roomId).emit("messageReceive", { text });
+        io.to(roomId).emit("messageReceive", { text,userId ,firstName,lastName});
       } catch (err) {
         console.log(err);
       }
