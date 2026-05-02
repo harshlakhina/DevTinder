@@ -42,11 +42,11 @@ function Requests() {
   };
 
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[90vh] py-5">
       <div className="w-1/2 ">
         <ul className="list flex flex-col gap-5">
           {ConnectionRequests.length > 0 ? (
-            <h1 className="text-center text-xl font-bold">
+            <h1 className="text-center text-2xl font-bold text-white">
               Connections Requests
             </h1>
           ) : (
@@ -58,7 +58,7 @@ function Requests() {
               const { firstName, lastName, photoUrl, about, age, gender } =
                 request.fromUserId;
               return (
-                <li className="list-row bg-base-300" key={request._id}>
+                <li className="list-row bg-[#2B3C3B]/80 " key={request._id}>
                   <div>
                     <img className="size-10 rounded-box" src={photoUrl} />
                   </div>
@@ -80,7 +80,7 @@ function Requests() {
                       Reject
                     </button>
                     <button
-                      className="btn btn-secondary btn-sm"
+                      className="btn btn-sm bg-orange-500 hover:bg-orange-600 text-white border-none"
                       onClick={() => reviewRequest(request._id, "accepted")}
                     >
                       Accept

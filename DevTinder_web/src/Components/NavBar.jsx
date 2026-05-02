@@ -21,11 +21,11 @@ function NavBar() {
 
   return (
     <>
-      <div className="navbar bg-base-100 shadow-sm">
+      <div className="navbar shadow-sm bg-gradient-to-r from-[#145B32] via-[#2D7B6B] to-[#72BFC0] text-[#A7B8B6] sticky top-0 z-1">
         <div className="flex-1">
-          <Link to="/feed" className="btn btn-ghost text-xl">
+          <a href="/feed" className="btn btn-ghost text-xl">
             Dev Tinder
-          </Link>
+          </a>
         </div>
         {user && (
           <div className="flex gap-2 items-center">
@@ -47,18 +47,17 @@ function NavBar() {
                 <li>
                   <Link to="/profile" className="justify-between">
                     Profile
-                    <span className="badge">New</span>
                   </Link>
                 </li>
                 <li>
-                  <Link to="/connections">Connections</Link>
+                  <a href="/connections">Connections</a>
                 </li>
-                 <li>
-                  <Link to="/requests">Requests</Link>
+                <li>
+                  <a href="/requests">Requests</a>
                 </li>
 
-                  <li>
-                  <Link to="/premium">Premium</Link>
+                <li>
+                  <a href="/premium">Premium</a>
                 </li>
 
                 <li onClick={handleLogout}>

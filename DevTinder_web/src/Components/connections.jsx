@@ -25,15 +25,17 @@ function Connections() {
   }, []);
 
   return (
-    <div className="flex justify-center mt-10">
+    <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[90vh] py-5">
       <div className="w-1/2 ">
         <ul className="list flex flex-col gap-5">
-          <h1 className="text-center text-2xl font-bold">Connections</h1>
+          <h1 className="text-center text-2xl font-bold text-white">Connections</h1>
           {connections &&
             connections.map((connection) => {
-              console.log(connection);
               return (
-                <li className="list-row bg-base-300" key={connection._id}>
+                <li
+                  className="list-row bg-[#2B3C3B]/80 "
+                  key={connection._id}
+                >
                   <div>
                     <img
                       className="size-10 rounded-box"
@@ -41,7 +43,7 @@ function Connections() {
                     />
                   </div>
                   <div>
-                    <div>
+                    <div className="text-white">
                       {connection.firstName + " " + connection.lastName}
                     </div>
                     {connection.age && connection.gender && (
@@ -55,8 +57,9 @@ function Connections() {
                   )}
 
                   <Link to={"/chat/" + connection._id}>
-                    {" "}
-                    <button className="btn btn-accent">Chat</button>
+                    <button className="btn bg-orange-500 hover:bg-orange-600 text-white">
+                      Chat
+                    </button>
                   </Link>
                 </li>
               );
