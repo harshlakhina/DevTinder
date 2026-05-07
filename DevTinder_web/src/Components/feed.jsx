@@ -5,6 +5,7 @@ import { addFeed } from "../Utils/feedSlice";
 import { useEffect, useRef } from "react";
 import UserCard from "./userCard";
 import { motion, AnimatePresence } from "motion/react";
+import { Icon } from "@iconify/react";
 
 function Feed() {
   const dispatch = useDispatch();
@@ -15,12 +16,12 @@ function Feed() {
     if (feed.length) return;
     const res = await axios.get(BASE_URL + "/feed", { withCredentials: true });
     console.log(res.data.users);
-    dispatch(addFeed(res?.data?.users));
+    if (res.data.users.length != 0) dispatch(addFeed(res?.data?.users));
   };
 
   useEffect(() => {
-    getFeed();
-  }, []);
+    if (feed.length == 0) getFeed();
+  }, [feed]);
 
   function handleUserCardExit(type) {
     exitCardAnimation.current = type;
@@ -29,7 +30,7 @@ function Feed() {
   return (
     <div className="flex justify-center items-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[79vh]  py-2">
       <AnimatePresence mode="wait">
-        {feed.length > 0 && (
+        {feed.length > 0 ? (
           <motion.div
             key={feed[0]._id}
             custom={exitCardAnimation}
@@ -49,6 +50,20 @@ function Feed() {
               handleUserCardExit={handleUserCardExit}
             />
           </motion.div>
+        ) : (
+          <div className="flex flex-col items-center gap-2">
+            <h1 className="text-4xl font-bold">You're all caught up!</h1>
+            <p className="text-[18px]">No more developers profile to show.</p>
+            <p className="text-[17px]">Check back later</p>
+
+            <button
+              className="bg-[#C46243] outline-none border-0 font-semibold cursor-pointer btn"
+              onClick={() => window.location.reload()}
+            >
+              <Icon icon="material-symbols-light:refresh" width={22} />
+              <p>Refresh</p>
+            </button>
+          </div>
         )}
       </AnimatePresence>
     </div>

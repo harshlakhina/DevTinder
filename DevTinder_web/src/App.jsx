@@ -10,7 +10,8 @@ import Requests from "./Components/requests";
 import Premium from "./Components/premium";
 import Success from "./Components/success";
 import Failure from "./Components/failure";
-import Chat from "./Components/chat"
+import Chat from "./Components/chat";
+import SignUp from "./Components/sign-up";
 
 function App() {
   const router = createBrowserRouter([
@@ -20,6 +21,7 @@ function App() {
       children: [
         { path: "feed", element: <Feed /> },
         { path: "login", element: <Login /> },
+        { path: "signup", element: <SignUp /> },
         { path: "profile", element: <Profile /> },
         { path: "connections", element: <Connections /> },
         { path: "/requests", element: <Requests /> },
