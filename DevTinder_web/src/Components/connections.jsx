@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../Utils/connectionSlice";
 import { Link } from "react-router-dom";
+import ConnectionsShimmer from "../shimmer/connectionShimmer";
 
 function Connections() {
   const connections = useSelector((state) => state.connections);
@@ -23,6 +24,8 @@ function Connections() {
   useEffect(() => {
     fetchConnections();
   }, []);
+
+  if (!connections) return <ConnectionsShimmer />;
 
   return (
     <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[90vh] py-5">
