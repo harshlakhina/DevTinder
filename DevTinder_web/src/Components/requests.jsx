@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addRequests, removeRequestById } from "../Utils/requestsSlice";
 import { Link } from "react-router-dom";
+import RequestsShimmer from "../shimmer/requestsShimmer";
 
 function Requests() {
   const ConnectionRequests = useSelector((state) => state.requests);
@@ -42,6 +43,8 @@ function Requests() {
     }
   };
 
+  if (!ConnectionRequests) return <RequestsShimmer />;
+
   return (
     <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[90vh] py-5">
       {ConnectionRequests.length > 0 ? (
@@ -69,7 +72,6 @@ function Requests() {
                       )}
                     </div>
                     {about && <p className="list-col-wrap text-xs">{about}</p>}
-
                     <div className="flex gap-3 items-center">
                       <button
                         className="btn btn-primary btn-sm"
@@ -92,10 +94,10 @@ function Requests() {
       ) : (
         <div className="flex flex-col items-center gap-2 justify-center ">
           <h1 className="text-4xl font-bold">No Requests Yet!</h1>
-          <p className="text-[16px]">You don't have any connection requests right now.</p>
-          <p className="text-[13px]">
-            Check back later for new ones.
+          <p className="text-[16px]">
+            You don't have any connection requests right now.
           </p>
+          <p className="text-[13px]">Check back later for new ones.</p>
 
           <Link
             className="bg-[#C46243] outline-none border-0 font-semibold cursor-pointer btn"
