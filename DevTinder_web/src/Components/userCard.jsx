@@ -4,11 +4,21 @@ import { useDispatch } from "react-redux";
 import { removeFeedById } from "../Utils/feedSlice";
 import { Icon } from "@iconify/react";
 
-function UserCard({ user, isbtns, handleUserCardExit }) {
+function UserCard({
+  user,
+  handleUserCardExit,
+  isInterestedDisabled,
+  setIsInterestedDisabled,
+  isIgnoredDisabled,
+  setIsIgnoredDisabled,
+}) {
   const { _id, firstName, lastName, photoUrl, age, gender, about } = user;
   const dispatch = useDispatch();
 
   const sendRequest = async (status, id) => {
+    setIsInterestedDisabled(true);
+    setIsIgnoredDisabled(true);
+
     try {
       const res = await axios.post(
         `${BASE_URL}/request/send/${status}/${id}`,
@@ -20,11 +30,12 @@ function UserCard({ user, isbtns, handleUserCardExit }) {
       dispatch(removeFeedById(_id));
     } catch (err) {
       console.log(err);
+    } finally {
+      setIsInterestedDisabled(false);
+      setIsIgnoredDisabled(false);
     }
   };
   return (
- 
-
     <div className="w-90  bg-slate-800/60 backdrop-blur-xl border border-white/10 shadow-2xl shadow-teal-500/20 flex flex-col items-center gap-4 rounded-2xl">
       <img
         src={photoUrl}
@@ -71,6 +82,7 @@ function UserCard({ user, isbtns, handleUserCardExit }) {
         <button
           className="flex items-center border border-indigo-500 text-white bg-indigo-500/20 hover:bg-indigo-800/20 py-2 px-8 rounded-[8px] cursor-pointer"
           onClick={() => sendRequest("ignored", _id)}
+          disabled={isIgnoredDisabled}
         >
           <Icon icon="jam:close" className="text-white text-xl" />
           <p>Ignore</p>
@@ -78,6 +90,7 @@ function UserCard({ user, isbtns, handleUserCardExit }) {
         <button
           className="flex items-center gap-1 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white py-2 px-6 rounded-[8px] cursor-pointer"
           onClick={() => sendRequest("interested", _id)}
+          disabled={isInterestedDisabled}
         >
           <Icon icon="mdi:heart" className="text-white text-xl" />
           <p>Interested</p>

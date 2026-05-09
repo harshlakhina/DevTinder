@@ -12,7 +12,7 @@ import { SignUpSchema } from "../schema/validators";
 
 function SignUp() {
   const navigate = useNavigate();
-  const [selectedGender, setSelectedGender] = useState("");
+  const [selectedGender, setSelectedGender] = useState(null);
   const [genderError, setGenderError] = useState(false);
 
   const methods = useForm({
@@ -30,7 +30,7 @@ function SignUp() {
   } = methods;
 
   async function handleSignUp(data) {
-    const { firstName, lastName, email, password } = data;
+    const { firstName, lastName, email, password, age, about } = data;
     try {
       const data = await axios.post(
         BASE_URL + "/signup",
@@ -39,6 +39,9 @@ function SignUp() {
           lastName,
           emailId: email,
           password,
+          age,
+          gender: selectedGender,
+          about,
         },
         { withCredentials: true },
       );
@@ -52,8 +55,8 @@ function SignUp() {
 
   const onSubmit = (data) => {
     console.log(data);
-    if (selectedGender === "") setGenderError(true);
-    handleSignUp(data);
+    if (selectedGender === null) setGenderError(true);
+    if (selectedGender !== null) handleSignUp(data);
   };
 
   const handleActiveGender = (value) => {
@@ -168,7 +171,7 @@ function SignUp() {
                 </div>
 
                 <div className="flex gap-2 justify-between">
-                  {GenderOptions.map(({ icon, value }) => {
+                  {GenderOptions.map(({ icon, value, label }) => {
                     const isActive = selectedGender === value;
                     return (
                       <div
@@ -180,7 +183,7 @@ function SignUp() {
                         onClick={() => handleActiveGender(value)}
                       >
                         <Icon icon={icon} width={20} />
-                        <p>{value}</p>
+                        <p>{label}</p>
                       </div>
                     );
                   })}

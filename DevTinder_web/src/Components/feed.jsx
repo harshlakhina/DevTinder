@@ -2,15 +2,23 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { BASE_URL } from "../Utils/contsants";
 import { addFeed } from "../Utils/feedSlice";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import UserCard from "./userCard";
 import { motion, AnimatePresence } from "motion/react";
 import { Icon } from "@iconify/react";
 
 function Feed() {
+  const [isInterestedDisabled, setIsInterestedDisabled] = useState(false);
+  const [isIgnoredDisabled, setIsIgnoredDisabled] = useState(false);
+
   const dispatch = useDispatch();
   const exitCardAnimation = useRef(null);
   const { feed } = useSelector((state) => state);
+
+  useEffect(() => {
+    if (feed.length == 0) getFeed();
+  }, [feed]);
+
 
   const getFeed = async () => {
     if (feed.length) return;
@@ -18,10 +26,6 @@ function Feed() {
     console.log(res.data.users);
     if (res.data.users.length != 0) dispatch(addFeed(res?.data?.users));
   };
-
-  useEffect(() => {
-    if (feed.length == 0) getFeed();
-  }, [feed]);
 
   function handleUserCardExit(type) {
     exitCardAnimation.current = type;
@@ -46,8 +50,11 @@ function Feed() {
           >
             <UserCard
               user={feed[0]}
-              isbtns={true}
               handleUserCardExit={handleUserCardExit}
+              isInterestedDisabled={isInterestedDisabled}
+              setIsInterestedDisabled={setIsInterestedDisabled}
+              isIgnoredDisabled={isIgnoredDisabled}
+              setIsIgnoredDisabled={setIsIgnoredDisabled}
             />
           </motion.div>
         ) : (

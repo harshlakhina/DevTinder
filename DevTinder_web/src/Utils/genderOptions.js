@@ -1,5 +1,5 @@
 export const GenderOptions = [
-  { value: "Male", icon: "material-symbols:male-rounded" },
-  { value: "Female", icon: "material-symbols:female-rounded" },
-  { value: "Other", icon: "ion:female" },
+  { label: "Male", value: "male", icon: "material-symbols:male-rounded" },
+  { label: "Female", value: "female", icon: "material-symbols:female-rounded" },
+  { label: "Other", value: "others", icon: "ion:female" },
 ];

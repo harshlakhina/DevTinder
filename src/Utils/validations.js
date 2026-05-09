@@ -1,12 +1,20 @@
 const validator=require("validator");
 
 function validateSignup(req){
-    const {firstName,lastName,emailId,password}=req.body;
+    const {firstName,lastName,emailId,password,age,gender,about}=req.body;
 
     if(!firstName || !lastName){
         throw new Error("firstName and lastName is required");
     }
-
+    else if(!age){
+        throw new Error("Age is required")
+    }
+    else if( !gender){
+        throw new Error ("Gender is required")
+    }
+    else if (!about){
+        throw new Error ("About is required")
+    }
     else if(!validator.isEmail(emailId)){
         throw new Error("email is invalid");
     }
