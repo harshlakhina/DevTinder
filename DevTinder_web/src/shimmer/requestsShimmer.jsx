@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function RequestsShimmer() {
   return (
-    <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[90vh] py-5">
+    <div className="flex justify-center  bg-gradient-to-br from-[#F8F7FC] via-[#F3EEFF] to-[#EEE8FF] min-h-[90vh] py-5">
       <div className="w-1/2 ">
         <ul className="list flex flex-col gap-5">
           <h1 className="text-center text-2xl font-bold text-white">

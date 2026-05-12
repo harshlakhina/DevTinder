@@ -70,33 +70,27 @@ function SignUp() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center items-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] py-5">
+        <div className="flex justify-center items-center bg-[#f6f6f7] py-5">
           <div
-            className={`w-110 bg-[#2B3C3B]/90 rounded-xl backdrop-blur-md shadow-sm`}
+            className={`w-110 bg-white border border-[#ECE8FF] rounded-xl backdrop-blur-md shadow-lg`}
           >
             <div className="card-body">
-              <h2 className="card-title justify-center text-[#EAF3F2] font-bold">
+              <h2 className="card-title justify-center text-[#111827] font-bold">
                 Sign Up
               </h2>
 
               <div className="flex flex-col gap-3">
-                <div className="flex gap-2 text-teal-400 items-center">
-                  <Icon
-                    icon="iconamoon:profile-fill"
-                    width={20}
-                    className="text-teal-300"
-                  />
-                  <h1 className="text-teal-400  text-[15px]">
-                    Basic Information
-                  </h1>
+                <div className="flex gap-2 text-[#7C4DFF] items-center">
+                  <Icon icon="iconamoon:profile-fill" width={20} />
+                  <h1 className="text-[15px]">Basic Information</h1>
                 </div>
                 <div className="flex gap-4">
                   <fieldset className="fieldset p-0">
-                    <div className="flex input bg-[#202C2C] border-[#3E5A5A] border">
+                    <div className="flex input bg-white  border-gray-200 ">
                       <Icon
                         icon="iconamoon:profile-fill"
                         width={20}
-                        className="text-[#7D8F8C]"
+                        className="text-[#7C4DFF]"
                       />
 
                       <RHFTextField name="firstName" placeholder="FirstName" />
@@ -106,13 +100,12 @@ function SignUp() {
                   </fieldset>
 
                   <fieldset className="fieldset p-0">
-                    <div className="flex input bg-[#202C2C] border-[#3E5A5A] border">
+                    <div className="flex input bg-white  border-gray-200 ">
                       <Icon
                         icon="iconamoon:profile-fill"
                         width={20}
-                        className="text-[#7D8F8C]"
+                        className="text-[#7C4DFF]"
                       />
-
                       <RHFTextField name="lastName" placeholder="lastName" />
                     </div>
                     {errors?.lastName &&
@@ -122,13 +115,12 @@ function SignUp() {
 
                 <div className="flex gap-4">
                   <fieldset className="fieldset p-0 ">
-                    <div className="flex input bg-[#202C2C] border-[#3E5A5A] ">
+                    <div className="flex input bg-white  border-gray-200 ">
                       <Icon
                         icon="mdi:email"
                         width={20}
-                        className="text-[#7D8F8C]"
+                        className="text-[#7C4DFF]"
                       />
-
                       <RHFTextField
                         name="email"
                         placeholder="Email"
@@ -139,11 +131,11 @@ function SignUp() {
                   </fieldset>
 
                   <fieldset className="fieldset p-0">
-                    <div className="flex input bg-[#202C2C] border-[#3E5A5A] ">
+                    <div className="flex input bg-white  border-gray-200 ">
                       <Icon
                         icon="mdi:lock"
                         width={20}
-                        className="text-[#7D8F8C]"
+                        className="text-[#7C4DFF]"
                       />
 
                       <RHFTextField
@@ -159,15 +151,9 @@ function SignUp() {
               </div>
 
               <div className="flex flex-col gap-3">
-                <div className="flex gap-2">
-                  <Icon
-                    icon="iconamoon:profile-fill"
-                    width={20}
-                    className="text-teal-300"
-                  />
-                  <h1 className="text-teal-400 text-[15px]">
-                    Profile Information
-                  </h1>
+                <div className="flex gap-2 text-[#7C4DFF] items-center">
+                  <Icon icon="iconamoon:profile-fill" width={20} />
+                  <h1 className="text-[15px]">Profile Information</h1>
                 </div>
 
                 <div className="flex gap-2 justify-between">
@@ -175,11 +161,11 @@ function SignUp() {
                     const isActive = selectedGender === value;
                     return (
                       <div
-                        className={`flex px-6 py-1.5 rounded-full border border-white/30  ${
+                        className={`flex px-6 py-1.5 rounded-full ${
                           isActive
-                            ? "bg-teal-400/20 text-white border-teal-300"
-                            : "bg-slate-900/50 text-white/70 border-white/10 hover:bg-teal-500/20 hover:border-teal-400/50"
-                        } text-[#7D8F8C] text-sm hover:bg-teal-400/10 hover:border-teal-300 hover:text-white transition cursor-pointer`}
+                            ? "bg-[#5B34F2] text-white"
+                            : " text-black hover:bg-[#5B34F2] hover:border-[#5B34F2] border-1 border-black"
+                        }text-sm  hover:text-white transition cursor-pointer`}
                         onClick={() => handleActiveGender(value)}
                       >
                         <Icon icon={icon} width={20} />
@@ -198,11 +184,12 @@ function SignUp() {
                 <div className="flex gap-3 w-full">
                   <div className="flex gap-2  w-full">
                     <fieldset className="fieldset ">
-                      <div className="flex input bg-[#202C2C] border-[#3E5A5A] border items-center gap-2 ">
+                      <div className="flex input bg-white  border-gray-200 ">
+                        {" "}
                         <Icon
                           icon="uil:calender"
                           width={20}
-                          className="text-[#7D8F8C]"
+                          className="text-[#7C4DFF]"
                         />
                         <RHFTextField
                           name="age"
@@ -214,11 +201,11 @@ function SignUp() {
                       {errors?.age && handleFormErrors(errors?.age?.message)}
                     </fieldset>
                     <fieldset className="fieldset ">
-                      <div className="flex input bg-[#202C2C] border-[#3E5A5A] border items-center gap-2">
+                      <div className="flex input bg-white  border-gray-200 ">
                         <Icon
                           icon="mdi:location"
                           width={20}
-                          className="text-[#7D8F8C]"
+                          className="text-[#7C4DFF]"
                         />
                         <RHFTextField name="location" placeholder="Location" />
                       </div>
@@ -227,11 +214,11 @@ function SignUp() {
                 </div>
 
                 <fieldset className="fieldset p-0">
-                  <div className="flex input bg-[#202C2C] border-[#3E5A5A] border w-full">
+                  <div className="flex input bg-white  border-gray-200 w-full">
                     <Icon
                       icon="material-symbols:docs"
                       width={20}
-                      className="text-[#7D8F8C]"
+                      className="text-[#7C4DFF]"
                     />
 
                     <RHFTextField
@@ -243,17 +230,17 @@ function SignUp() {
                 </fieldset>
 
                 <fieldset className="fieldset p-0">
-                  <div className="flex  bg-[#202C2C] border-[#3E5A5A] border w-full p-2 gap-2">
+                  <div className="flex bg-white  border-gray-200  border w-full p-2 gap-2">
                     <Icon
                       icon="mdi:pencil"
                       width={20}
-                      className="text-[#7D8F8C]"
+                      className="text-[#7C4DFF]"
                     />
 
                     <RHFTextArea
                       name="about"
                       placeholder="Tell us about yourself..."
-                      className="w-full min-h-15 outline-none"
+                      className="w-full min-h-15 outline-none placeholder:text-[#949caa] text-black"
                     />
                   </div>
                   {errors?.about && handleFormErrors(errors?.about?.message)}
@@ -261,16 +248,16 @@ function SignUp() {
               </div>
 
               <div className="justify-center card-actions">
-                <button className="btn bg-[#C46243] hover:bg-[#A84E36] text-white font-semibold px-6 py-2 rounded-lg shadow-md border-none">
+                <button className="btn bg-gradient-to-r from-[#7C4DFF] to-[#5B34F2] hover:from-[#6C3CF0] hover:to-[#4F2BE0] text-white font-semibold px-6 py-2 rounded-lg shadow-md border-none">
                   Sign Up
                 </button>
               </div>
 
               <div className="flex justify-center">
                 <div className="flex">
-                  <p className="text-[#A7B8B6]">Existing User ?</p>
+                  <p className="text-[#111827]">Existing User ?</p>
                   <p
-                    className="text-[#C46243] hover:text-[#A84E36] font-semibold cursor-pointer"
+                    className="text-[#7C4DFF] hover:text-[#5932f7] font-semibold cursor-pointer"
                     onClick={() => navigate("/login")}
                   >
                     Login here

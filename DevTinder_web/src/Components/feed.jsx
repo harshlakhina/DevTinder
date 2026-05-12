@@ -19,7 +19,6 @@ function Feed() {
     if (feed.length == 0) getFeed();
   }, [feed]);
 
-
   const getFeed = async () => {
     if (feed.length) return;
     const res = await axios.get(BASE_URL + "/feed", { withCredentials: true });
@@ -32,7 +31,7 @@ function Feed() {
   }
 
   return (
-    <div className="flex justify-center items-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] min-h-[79vh]  py-2">
+    <div className="flex justify-center items-center bg-gradient-to-br from-[#F8F7FC] to-[#F1ECFF] min-h-[79vh]  py-2">
       <AnimatePresence mode="wait">
         {feed.length > 0 ? (
           <motion.div
@@ -59,12 +58,16 @@ function Feed() {
           </motion.div>
         ) : (
           <div className="flex flex-col items-center gap-2">
-            <h1 className="text-4xl font-bold">You're all caught up!</h1>
-            <p className="text-[18px]">No more developers profile to show.</p>
-            <p className="text-[17px]">Check back later</p>
+            <h1 className="text-4xl font-bold" text-black>
+              You're all caught up!
+            </h1>
+            <p className="text-[18px] text-black">
+              No more developers profile to show.
+            </p>
+            <p className="text-[17px] text-black">Check back later</p>
 
             <button
-              className="bg-[#C46243] outline-none border-0 font-semibold cursor-pointer btn"
+              className="bg-gradient-to-r from-[#7C4DFF] to-[#5B34F2] hover:from-[#6C3CF0] hover:to-[#4F2BE0] text-white outline-none border-0 font-semibold cursor-pointer btn"
               onClick={() => window.location.reload()}
             >
               <Icon icon="material-symbols-light:refresh" width={22} />

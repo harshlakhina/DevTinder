@@ -55,24 +55,24 @@ function Login() {
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="flex justify-center items-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7] h-[90vh]">
+        <div className="flex justify-center items-center bg-[#f6f6f7] h-[90vh]">
           <div
-            className={`w-80 h-fit bg-[#2B3C3B]/80 rounded-xl backdrop-blur-md shadow-sm`}
+            className={`w-80 h-fit bg-white border border-[#ECE8FF] rounded-xl backdrop-blur-md  shadow-xl shadow-[#7C4DFF]/10`}
           >
             <div className="card-body">
-              <h2 className="card-title justify-center text-[#EAF3F2] font-bold">
+              <h2 className="card-title justify-center text-[#111827] font-bold">
                 Login
               </h2>
 
-              <fieldset className="fieldset p-0">
+              <fieldset className="fieldset p-0 ">
                 <legend className="fieldset-legend text-[#A7B8B6]">
                   Email ID:
                 </legend>
-                <div className="flex input bg-[#202C2C] border-[#3E5A5A] border">
+                <div className="flex input bg-white  border-gray-200 focus:border focus:border-[#ff4d74]">
                   <Icon
                     icon="mdi:email"
                     width={20}
-                    className="text-[#7D8F8C]"
+                    className="text-[#7C4DFF]"
                   />
 
                   <RHFTextField name="email" placeholder="Email" type="email" />
@@ -84,8 +84,8 @@ function Login() {
                 <legend className="fieldset-legend text-[#A7B8B6]">
                   Password:
                 </legend>
-                <div className="flex input bg-[#202C2C] border-[#3E5A5A] border">
-                  <Icon icon="mdi:lock" width={20} className="text-[#7D8F8C]" />
+                <div className="flex input bg-white  border-gray-200 ">
+                  <Icon icon="mdi:lock" width={20} className="text-[#7C4DFF]" />
 
                   <RHFTextField
                     name="password"
@@ -97,16 +97,16 @@ function Login() {
               </fieldset>
 
               <div className="justify-center card-actions">
-                <button className="btn bg-[#C46243] hover:bg-[#A84E36] text-white font-semibold px-6 py-2 rounded-lg shadow-md border-none">
+                <button className="btn bg-gradient-to-r from-[#7C4DFF] to-[#5B34F2] hover:from-[#6C3CF0] hover:to-[#4F2BE0] text-white font-semibold px-6 py-2 rounded-lg shadow-md border-none">
                   Login
                 </button>
               </div>
 
               <div className="flex justify-center">
                 <div className="flex">
-                  <p className="text-[#A7B8B6]">New User?</p>
+                  <p className="text-[#111827] ">New User?</p>
                   <p
-                    className="text-[#C46243] hover:text-[#A84E36] font-semibold cursor-pointer"
+                    className="text-[#7C4DFF] hover:text-[#5932f7] font-semibold cursor-pointer"
                     onClick={() => navigate("/signup")}
                   >
                     Sign Up here

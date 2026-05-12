@@ -21,10 +21,12 @@ function NavBar() {
 
   return (
     <>
-      <div className="navbar shadow-sm bg-gradient-to-r from-[#145B32] via-[#2D7B6B] to-[#72BFC0] text-[#A7B8B6] sticky top-0 z-1">
+      <div className="navbar shadow-sm bg-white text-[#111827] border-b border-[#ECE8FF] sticky top-0 z-1">
         <div className="flex-1">
-          <a href="/feed" className="btn btn-ghost text-xl">
-            Dev Tinder
+          <a href="/feed" className="btn btn-ghost text-xl ">
+            <div className="flex">
+              <span>Dev</span> <span className="text-[#7C4DFF]">Tinder</span>
+            </div>
           </a>
         </div>
         {user && (
@@ -42,9 +44,10 @@ function NavBar() {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content  rounded-box z-1 mt-3 w-52 p-2 shadow bg-white "
               >
                 <li>
+                  {" "}
                   <Link to="/profile" className="justify-between">
                     Profile
                   </Link>
@@ -53,6 +56,7 @@ function NavBar() {
                   <a href="/connections">Connections</a>
                 </li>
                 <li>
+                  {" "}
                   <a href="/requests">Requests</a>
                 </li>
 

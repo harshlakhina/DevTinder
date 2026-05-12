@@ -19,7 +19,7 @@ function RHFTextField({
             textAlignVertical={multiline ? "top" : "center"}
             type={type}
             placeholder={placeholder}
-            className={className}
+            className={`placeholder:text-[#949caa] text-black ${className}`}
             {...field}
             {...others}
           />

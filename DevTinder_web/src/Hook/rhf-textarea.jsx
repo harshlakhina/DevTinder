@@ -9,10 +9,10 @@ function RHFTextArea({ name, placeholder, className, others }) {
       render={({ field }) => {
         return (
           <textarea
-          maxLength={150}
+            maxLength={150}
             className="textarea textarea-md"
             placeholder={placeholder}
-            className={className}
+            className={`placeholder:text-[#949caa] text-black ${className}`}
             {...field}
             {...others}
           />

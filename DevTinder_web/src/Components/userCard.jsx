@@ -36,63 +36,63 @@ function UserCard({
     }
   };
   return (
-    <div className="w-90  bg-slate-800/60 backdrop-blur-xl border border-white/10 shadow-2xl shadow-teal-500/20 flex flex-col items-center gap-4 rounded-2xl">
+    <div className="w-90 bg-white backdrop-blur-xl border border-[#EEE9FF] shadow-2xl shadow-[#7C4DFF]/10   flex flex-col items-center gap-4 rounded-2xl">
       <img
         src={photoUrl}
         alt="photo"
-        className="h-38 w-38 rounded-full  border-4 border-teal-600 mt-3 object-cover"
+        className="h-38 w-38 rounded-full  bg-[#F3EEFF] border-4 border-[#7C4DFF] mt-3 object-cover"
       />
       <div className="flex flex-col items-center gap-1">
-        <p className="text-white/60 font-bold text-xl">
+        <p className="text-[#111827] font-bold text-xl">
           {firstName + " " + lastName}
         </p>
         <div className="flex gap-2">
           <div className="flex items-center gap-1">
-            <Icon icon="uil:calender" className="text-teal-300" />
-            <p className="text-white/60">{`Age : ${age}`}</p>
+            <Icon icon="uil:calender" className="text-[#6C3CF0]" />
+            <p className="text-[#111827]">{`Age : ${age}`}</p>
           </div>
           <div className="flex items-center gap-1">
-            <Icon icon="iconamoon:profile-fill" className="text-teal-300" />
-            <p className="text-white/60">{`Gender : ${gender}`}</p>
+            <Icon icon="iconamoon:profile-fill" className="text-[#6C3CF0]" />
+            <p className="text-[#111827]">{`Gender : ${gender}`}</p>
           </div>
         </div>
       </div>
 
-      <p className="text-white/60  text-[14px] text-center px-6">{about}</p>
+      <p className="text-[#111827]  text-[14px] text-center px-6">{about}</p>
 
       <div className="flex gap-2 flex-wrap px-6 justify-center">
-        <p className="px-4 py-1.5 rounded-full border border-white/30 bg-white/5 text-white/80 text-sm hover:bg-teal-400/10 hover:border-teal-300 transition">
+        <p className="px-4 py-1.5 rounded-full  border border-[#DCCFFF] bg-[#F8F5FF] text-[#111827] text-sm hover:bg-[#7C4DFF] hover:text-white transition">
           React
         </p>
-        <p className="px-4 py-1.5 rounded-full border border-white/30 bg-white/5 text-white/80 text-sm hover:bg-teal-400/10 hover:border-teal-300 transition">
-          JS
+        <p className="px-4 py-1.5 rounded-full  border border-[#DCCFFF] bg-[#F8F5FF] text-[#111827] text-sm hover:bg-[#7C4DFF] hover:text-white transition">
+          Java
         </p>
-        <p className="px-4 py-1.5 rounded-full border border-white/30 bg-white/5 text-white/80 text-sm hover:bg-teal-400/10 hover:border-teal-300 transition">
-          Node
+        <p className="px-4 py-1.5 rounded-full  border border-[#DCCFFF] bg-[#F8F5FF] text-[#111827] text-sm hover:bg-[#7C4DFF] hover:text-white transition">
+          C++
         </p>
-        <p className="px-4 py-1.5 rounded-full border border-white/30 bg-white/5 text-white/80 text-sm hover:bg-teal-400/10 hover:border-teal-300 transition">
-          Mongo DB
+        <p className="px-4 py-1.5 rounded-full  border border-[#DCCFFF] bg-[#F8F5FF] text-[#111827] text-sm hover:bg-[#7C4DFF] hover:text-white transition">
+          python
         </p>
-        <p className="px-4 py-1.5 rounded-full border border-white/30 bg-white/5 text-white/80 text-sm hover:bg-teal-400/10 hover:border-teal-300 transition">
-          AI
+        <p className="px-4 py-1.5 rounded-full  border border-[#DCCFFF] bg-[#F8F5FF] text-[#111827] text-sm hover:bg-[#7C4DFF] hover:text-white transition">
+          DBMS
         </p>
       </div>
 
-      <div className="bg-slate-900/40 text-white/60 flex w-full p-4 rounded-b-2xl justify-between ">
+      <div className=" flex w-full p-4 rounded-b-2xl justify-between ">
         <button
-          className="flex items-center border border-indigo-500 text-white bg-indigo-500/20 hover:bg-indigo-800/20 py-2 px-8 rounded-[8px] cursor-pointer"
+          className="flex items-center border border-[#7C4DFF] text-[#6C3CF0] bg-white hover:bg-[#F3EEFF] py-2 px-8 rounded-[8px] cursor-pointer"
           onClick={() => sendRequest("ignored", _id)}
           disabled={isIgnoredDisabled}
         >
-          <Icon icon="jam:close" className="text-white text-xl" />
+          <Icon icon="jam:close" className="text-xl" />
           <p>Ignore</p>
         </button>
         <button
-          className="flex items-center gap-1 bg-gradient-to-r from-teal-500 to-emerald-500 hover:from-teal-400 hover:to-emerald-400 text-white py-2 px-6 rounded-[8px] cursor-pointer"
+          className="flex items-center gap-1 bg-gradient-to-r from-[#7C4DFF] to-[#5B34F2] hover:from-[#6C3CF0] hover:to-[#4F2BE0] text-white py-2 px-6 rounded-[8px] cursor-pointer"
           onClick={() => sendRequest("interested", _id)}
           disabled={isInterestedDisabled}
         >
-          <Icon icon="mdi:heart" className="text-white text-xl" />
+          <Icon icon="mdi:heart" className=" text-xl" />
           <p>Interested</p>
         </button>
       </div>

@@ -67,14 +67,14 @@ function Chart() {
   }, []);
 
   return (
-    <div className="flex justify-center bg-gradient-to-r from-[#145B32] via-[#459B8E] to-[#8BD3E7]">
-      <div className="border-2  w-1/2 max-h-116 min-h-116 my-4 relative overflow-hidden bg-slate-800/60 border border-white/20 backdrop-blur-md shadow-2xl shadow-black/40 rounded-2x">
-        <div className="text-white  bg-slate-900/40 border-b border-white/10 flex justify-center h-10 items-center gap-1">
-          <Icon icon="mdi:chat-outline" className=" text-xl" />
-          <p>chat</p>
+    <div className="flex justify-center bg-gradient-to-br from-[#F8F7FC] via-[#F3EEFF] to-[#EEE8FF]">
+      <div className="w-1/2 max-h-116 min-h-116 my-4 relative overflow-hidden  backdrop-blur-md shadow-2xl shadow-black/40 ">
+        <div className="text-white bg-white border border-[#ECE8FF] shadow-2xl shadow-[#7C4DFF]/10  flex justify-center h-10 items-center gap-1">
+          <Icon icon="mdi:chat-outline" className=" text-2xl text-[#7C4DFF]" />
+          <p className="text-[#111827] font-bold text-xl">chat</p>
         </div>
 
-        <div className="overflow-y-auto h-full pb-30 bg-slate-900/20">
+        <div className="overflow-y-auto h-full pb-30 bg-[#FCFBFF] border-b border-[#ECE8FF]">
           {messages.length > 0 &&
             messages.map((msg, idx) => {
               return (
@@ -82,10 +82,10 @@ function Chart() {
                   className={`chat ${userId.toString() === msg.userId.toString() ? "chat-end" : "chat-start"}`}
                   key={idx}
                 >
-                  <div className="chat-header text-white/70">
+                  <div className="chat-header text-[#111827]">
                     {msg.firstName + " " + msg.lastName}
                   </div>
-                  <div className="chat-bubble bg-teal-600 text-white">
+                  <div className="chat-bubble bg-[#7C4DFF] text-white break-all ">
                     {msg.text}
                   </div>
                 </div>
@@ -93,26 +93,25 @@ function Chart() {
             })}
         </div>
 
-        <div
-          className="fixed bottom-0 w-full bg-slate-900/40
-border-b border-white/10 "
-        >
+        <div className="fixed bottom-0 w-full bg-white border-t-black border">
           <div className="flex w-full p-3 gap-2">
             <div className="w-full">
-              <label className="input w-full outline-0">
+              <label className=" input border-2 w-full outline-0 bg-white border-2 border-gray-400">
                 <input
                   type="text"
                   placeholder="Enter Your Message"
                   value={newMsg}
                   onChange={(e) => setNewMsg(e.target.value)}
+                  className="bg-white text-black "
                 />
               </label>
             </div>
             <button
-              className="btn btn-neutral outline-0 border-0 bg-teal-600 hover:bg-teal-500 text-white"
+              className="btn btn-neutral outline-0 border-0 bg-[#7C4DFF] text-white hover:bg-[#9068fc] flex items-center"
               onClick={handleSendMsg}
             >
-              Send
+              <Icon icon="tabler:send" width={20} />
+              <span>Send</span>
             </button>
           </div>
         </div>
